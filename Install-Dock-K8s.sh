@@ -35,6 +35,7 @@ fi
 echo "###############################"
 echo "Désactivation de la SWAPP"
 sudo swappoff --all
+echo "PENSE A DESACTIVER LA SWAP DANS LE FICHIER /ETCFSTAB/ SINON LA SWAP REPREND AU REBBOT"
 
 echo "###############################"
 echo "Installation Docker runtime"
