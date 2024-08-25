@@ -3,7 +3,7 @@
 # Demande du nom de la machine à l'utilisateur
 read -p "Veuillez entrer le nom de la machine (ou appuyez sur Entrée pour passer) : " hostname
 
-echo "###############################"
+echo "##########"
 echo "Commençons par la configuration réseau"
 
 # Récupérer les paramètres réseau actuels
