@@ -13,25 +13,25 @@ CURRENT_GATEWAY=$(ip route | grep default | awk '{print $3}')
 CURRENT_DNS=$(nmcli dev show | grep 'IP4.DNS' | awk '{print $2}' | head -n 1)
 
 # Fonction pour demander confirmation ou changement de chaque paramètre
-function ask_user {
-    local prompt="$1"
-    local default_value="$2"
-    local user_input
-
-    read -p "$prompt (actuel: $default_value) [Appuyez sur Entrée pour conserver, ou entrez un nouveau] : " user_input
-
-    if [ -z "$user_input" ]; then
-        echo "$default_value"
-    else
-        echo "$user_input"
-    fi
-}
+#function ask_user {
+#    local prompt="$1"
+ #   local default_value="$2"
+  #  local user_input
+#
+ #   read -p "$prompt (actuel: $default_value) [Appuyez sur Entrée pour conserver, ou entrez un nouveau] : " user_input
+#
+ #   if [ -z "$user_input" ]; then
+  #      echo "$default_value"
+   # else
+    #    echo "$user_input"
+    #fi
+#}
 
 # Demander à l'utilisateur de vérifier ou de changer les paramètres
-IP=$(ask_user "Voulez-vous changer l'adresse IP ?" $CURRENT_IP)
-MASK=$(ask_user "Voulez-vous changer le masque de sous-réseau ?" $CURRENT_MASK)
-GATEWAY=$(ask_user "Voulez-vous changer la passerelle par défaut ?" $CURRENT_GATEWAY)
-DNS=$(ask_user "Voulez-vous changer l'adresse DNS ?" $CURRENT_DNS)
+#IP=$(ask_user "Voulez-vous changer l'adresse IP ?" $CURRENT_IP)
+#MASK=$(ask_user "Voulez-vous changer le masque de sous-réseau ?" $CURRENT_MASK)
+#GATEWAY=$(ask_user "Voulez-vous changer la passerelle par défaut ?" $CURRENT_GATEWAY)
+#DNS=$(ask_user "Voulez-vous changer l'adresse DNS ?" $CURRENT_DNS)
 
 # Afficher les paramètres choisis
 echo -e "\nLes paramètres réseau configurés sont :"
@@ -41,16 +41,16 @@ echo "Passerelle : $GATEWAY"
 echo "DNS : $DNS"
 
 # Configurer les paramètres réseau
-echo "Configuration des paramètres réseau..."
-sudo nmcli con mod "Wired connection 1" ipv4.addresses "$IP/$MASK"
-sudo nmcli con mod "Wired connection 1" ipv4.gateway "$GATEWAY"
-sudo nmcli con mod "Wired connection 1" ipv4.dns "$DNS"
-sudo nmcli con mod "Wired connection 1" ipv4.method manual
+#echo "Configuration des paramètres réseau..."
+#sudo nmcli con mod "Wired connection 1" ipv4.addresses "$IP/$MASK"
+#sudo nmcli con mod "Wired connection 1" ipv4.gateway "$GATEWAY"
+#sudo nmcli con mod "Wired connection 1" ipv4.dns "$DNS"
+#sudo nmcli con mod "Wired connection 1" ipv4.method manual
 
 # Appliquer les changements
-sudo nmcli con up "Wired connection 1"
+#sudo nmcli con up "Wired connection 1"
 
-echo "Configuration réseau mise à jour avec succès."
+#echo "Configuration réseau mise à jour avec succès."
 
 # Mise à jour du nom de la machine et du fichier /etc/hosts
 if [ -z "$hostname" ]; then
